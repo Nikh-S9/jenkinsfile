@@ -38,6 +38,12 @@ pipeline {
                         '''
                     }
                 }
+                stage('TESTING3') {
+                    agent { label 'slave1' }
+                    steps {
+                        sh 'echo "This a TESTING3 stage"'
+                    }
+                }
             }    
         }    
     }
