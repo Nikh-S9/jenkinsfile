@@ -8,19 +8,23 @@ pipeline {
             when {
         branch 'main'
       }
-            steps {
-                echo "this is my stage test1"
-            }
-        }
-
-        stage('Test2') {
-
-            when {
-        branch 'main'
-      }
-            steps {
-                echo "this is my stage test2"
-            }
-        }
+       parallel {
+                stage('TESTING1') {
+                    agent { label 'master' } 
+                    steps {
+                        sh 'echo "This is a TESTING1 stage"'
+                        sh 'sleep 5'
+                    }
+                }
+                stage('TESTING2') {
+                    agent { label 'master' } 
+                    steps {
+                        sh '''
+                            echo "This is a TESTING2 stage"
+                            sleep 5
+                        '''
+                    }
+                }
+        }  
     }
 }
