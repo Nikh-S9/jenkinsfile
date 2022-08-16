@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Test1') {
             when {
-                branch 'branch1'
+                branch 'main'
             }
             parallel {
                 stage('TESTING1') {
