@@ -3,18 +3,18 @@ pipeline {
     stages {
         stage('Test1') {
             when {
-                branch 'main'
+                branch 'branch1'
             }
             parallel {
                 stage('TESTING1') {
-                    agent { label 'branch1' } 
+                    agent { label 'master' } 
                     steps {
                         sh 'echo "This is a TESTING1 stage"'
                         sh 'sleep 5'
                     }
                 }
                 stage('TESTING2') {
-                    agent { label 'branch1' } 
+                    agent { label 'master' } 
                     steps {
                         sh '''
                             echo "This is a TESTING2 stage"
